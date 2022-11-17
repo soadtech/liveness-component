@@ -1,0 +1,14 @@
+{
+  "entries": [
+    "./components/camera-component/Camera/Camera.js",
+    "./components/camera-component/ControlPanel/ControlPanel.js",
+    "./components/camera-component/MainComponent/MainComponent.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "2.19.2",
+    "typescriptVersion": "4.7.4"
+  },
+  "collections": [],
+  "bundles": []
+}

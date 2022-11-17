@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+  <title>Stencil Component Starter</title>
+
+  <script type="module" src="/build/fas-web-ui-component-camera.esm.js"></script>
+  <script nomodule src="/build/fas-web-ui-component-camera.js"></script>
+  <script src="/assets/scripts/opencv.js"></script>
+</head>
+<body>
+  <div class="wrapper">
+    <camera-component
+            show_mask="true"
+            probability_threshold="50"
+            background_color="#fff"
+            disable_control_panel="true"
+            stop_after_capturing="false"
+            face_detection="true"
+            debug="true"
+            logo_style='{"align-self": "end", "max-width": "300px"}'
+            model_path="/assets/models/"
+            id="camera-component"
+    ></camera-component>
+    <!-- <button id="open-camera">open camera</button>
+    <button id="close-camera">close camera</button>
+    <button id="load-models">load models</button> -->
+
+  </div>
+<script>
+  window.onload = () => {
+    const camera = document.getElementById("camera-component");
+    camera.addEventListener("error", (event) => {
+      const error = event.detail.error;
+      // console.log(error)
+    })
+    camera.addEventListener("detectionError", (event) => {
+      const detectionErrors = event.detail.error;
+      // console.log(detectionErrors)
+    })
+    camera.addEventListener("capture", (event) => {
+      const photos = event.detail.photos;
+      console.log(photos)
+    })
+    camera.addEventListener("loadedModels", (event) => {
+      const loadedModels = event.detail.loadedModels;
+      // console.log(`loadedModels`, loadedModels)
+    })
+    camera.addEventListener("detectorInitialized", (event) => {
+      const initializationTime = event.detail.initializationTime;
+      // console.log(`detectorInitialized: ${initializationTime}`)
+    })
+  }
+  document.getElementById("load-models").addEventListener("click", () => {
+    loadModels();
+  })
+  document.getElementById("open-camera").addEventListener("click", () => {
+    openCamera();
+  })
+  document.getElementById("close-camera").addEventListener("click", () => {
+    closeCamera();
+  })
+  document.getElementById("close-camera").addEventListener("click", () => {
+    closeCamera();
+  })
+
+  function openCamera() {
+    const camera = document.getElementById("camera-component");
+    let event = new Event("openCamera");
+    camera.dispatchEvent(event);
+  }
+
+  function closeCamera() {
+    const camera = document.getElementById("camera-component");
+    let event = new Event("closeCamera");
+    camera.dispatchEvent(event);
+  }
+
+  function loadModels() {
+    const camera = document.getElementById("camera-component");
+
+    const path = "/assets/models";
+
+    const event = new CustomEvent("loadModels", {
+      detail: {
+        path
+      },
+      bubbles: true,
+      cancelable: false
+    });
+    camera.dispatchEvent(event);
+  }
+
+</script>
+<style>
+  body { min-height: 100vh; }
+
+  .wrapper {
+    /* width: 800px; */
+    height: 400px;
+    margin: auto;
+  }
+  /* @media only screen and (min-device-width: 480px){
+    .wrapper {
+      width: 100%;
+      height: 100%;
+    }
+  } */
+</style>
+</body>
+</html>
