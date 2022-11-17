@@ -1,0 +1,42 @@
+.camera{
+  width: 100%;
+  height: 100%;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.cameraCanvas {
+  transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  max-width: 100%;
+  max-height: 100%;
+  z-index: 2;
+}
+
+.cameraVideo {
+  transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  z-index: 1;
+  position: absolute;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.cameraMobile {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: black;
+}
+
+.canvas-on-video {
+  max-width: 100%;
+  max-height: 100%;
+  position: absolute;
+  left: 50%;
+  top:  50%;
+  z-index: 2;
+  transform: scale(-1, 1);
+}

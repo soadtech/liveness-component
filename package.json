@@ -1,0 +1,41 @@
+{
+  "name": "@soadtech/liveness-component",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/soadtech"
+  },
+  "version": "1.0.1",
+  "description": "idrnd-web-component",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/types/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/fas-web-ui-component-camera/fas-web-ui-component-camera.js",
+  "files": [
+    "dist/",
+    "dist/loader/"
+  ],
+  "scripts": {
+    "build": "stencil build --docs --prod",
+    "start": "stencil build --dev --watch --serve --no-open",
+    "test": "stencil test --spec --e2e",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate"
+  },
+  "devDependencies": {
+    "@d0whc3r/stencil-inline-file": "^0.1.2",
+    "@stencil/core": "^2.4.0",
+    "@types/node": "^16.7.13",
+    "rollup-plugin-image": "^1.0.2"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@vladmandic/face-api": "^1.6.4",
+    "kalmanjs": "^1.1.0",
+    "node-fetch": "^2.1.2",
+    "piexifjs": "^1.0.4",
+    "stencil-fragment": "^1.0.1"
+  }
+}
